@@ -35,13 +35,27 @@ const TodoList: React.FC = () => {
             setVegetables([...vegetables, item]);
         }
 
+        // After 5 seconds, check if the item is still in its category list before moving it back
         setTimeout(() => {
             if (item.type === 'Fruit') {
-                setFruits(fruits => fruits.filter(i => i !== item));
+                setFruits(fruits => {
+                    // If the item is still in the fruits list, move it back to the items list
+                    if (fruits.includes(item)) {
+                        setItems(items => [...items, item]);
+                        return fruits.filter(i => i !== item);
+                    }
+                    return fruits;
+                });
             } else {
-                setVegetables(vegetables => vegetables.filter(i => i !== item));
+                setVegetables(vegetables => {
+                    // If the item is still in the vegetables list, move it back to the items list
+                    if (vegetables.includes(item)) {
+                        setItems(items => [...items, item]);
+                        return vegetables.filter(i => i !== item);
+                    }
+                    return vegetables;
+                });
             }
-            setItems(items => [...items, item]);
         }, 5000);
     };
 
