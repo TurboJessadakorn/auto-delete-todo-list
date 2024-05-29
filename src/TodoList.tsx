@@ -69,7 +69,7 @@ const TodoList: React.FC = () => {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', padding: '20px' }}>
+        <div className='pageContainer'>
 
             {/* Items column */}
             <div className='itemColumn'>
@@ -79,7 +79,7 @@ const TodoList: React.FC = () => {
                     </button>
                 ))}
             </div>
-            
+
             {/* Fruits column */}
             <div className='customColumn'>
                 <div className='headerContainer'>
